@@ -21,14 +21,7 @@ def get_filters():
     city = input('\nHello! Let\'s explore some US bikeshare data!\n'
                  'Would you like to see data for Chicago, New York City, or Washington?\n')
     print('Okay. We will explore data for ' + city.title() + '.')
-    if city == 'Chicago':
-        return(chicago)
-    elif city == 'New York City':
-      	return(new_york_city)
-    elif city == 'Washington':
-      	return(washington)
-    else:
-      	print(city)
+    city = CITY_DATA[city.lower()]
 
     # get user input for month (all, january, february, ... , june)
     month = input('\nWhich month? January, February, March, April, May, June, or all?\n')
@@ -55,7 +48,7 @@ def load_data(city, month, day):
     """
 
     # load data file into a dataframe
-    df = pd.read_csv(CITY_DATA[city])
+    df = pd.read_csv(city)
 
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
