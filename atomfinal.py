@@ -82,7 +82,9 @@ def time_stats(df):
     dfstarttime = pd.to_datetime(starttime)
     df['month'] = df['Start Time'].dt.strftime('%B')
 
-    numberedmonth = dfmonth.mode()[0]
+    popmonth = dfmonth.mode()[0]
+    print(popmonth)
+
 
 # convert the Start Time column to datetime
 
