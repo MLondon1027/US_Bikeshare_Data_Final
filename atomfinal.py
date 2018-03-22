@@ -54,17 +54,8 @@ def load_data(city, month, day):
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
     # extract month and day of week from Start Time to create new columns
-    df['month'] = df['Start Time'].dt.month
+    df['month'] = df['Start Time'].dt.strftime('%B')
     df['day_of_week'] = df['Start Time'].dt.weekday_name
-
-    # filter by month if applicable
-    if month != 'all':
-        # use the index of the months list to get the corresponding int
-        months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month = months.index(month) + 1
-
-        # filter by month to create the new dataframe
-        df = df[df['month'] == month]
 
     # filter by day of week if applicable
     if day != 'all':
@@ -72,8 +63,6 @@ def load_data(city, month, day):
         df = df[df['day_of_week'] == day.title()]
 
     return df
-
-
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
@@ -91,49 +80,16 @@ def time_stats(df):
 
 
     dfstarttime = pd.to_datetime(starttime)
-    dfmonth = dfstarttime.dt.month
+    df['month'] = df['Start Time'].dt.strftime('%B')
 
     numberedmonth = dfmonth.mode()[0]
 
-
-
-
-    if numberedmonth == '01':
-        print('January')
-    elif numberedmonth == '02':
-        print('February')
-    elif numberedmonth == '03':
-        print('March')
-    elif numberedmonth == '04':
-        print('April')
-    elif numberedmonth == '05':
-        print('May')
-    elif numberedmonth == '06':
-        print('June')
-    elif numberedmonth == '07':
-        print('July')
-    elif numberedmonth == '08':
-        print('August')
-    elif numberedmonth == '09':
-        print('September')
-    elif numberedmonth == '10':
-        print('October')
-    elif numberedmonth == '11':
-        print('November')
-    elif numberedmonth == '12':
-        print('December')
-
-
-    # display the most common day of week
-
 # convert the Start Time column to datetime
-
-
 
     dfstarttime = pd.to_datetime(starttime)
     weekdayname = dfstarttime.dt.weekday_name
 
-
+    # display the most common day of week
     popular_day = weekdayname.mode()[0]
 
     print('Most Common Day of the Week:', popular_day)
