@@ -179,7 +179,7 @@ def user_stats(df):
     	gender = df['Gender'].value_counts()
     	print('Users by Gender:\n', gender) #FIX: there is a space on the second line
     else:
-	print('Gender information is unavailable for this city.')
+	print('Gender data is unavailable for this city.')
 
     # Display earliest, most recent, and most common year of birth
     if 'Birth Year' in df:
@@ -195,7 +195,7 @@ def user_stats(df):
     	common_year = birth_year_totals.idxmax()
     	print('Most Common Birth Year:', common_year.astype(int))
     else:
-	print('Birth year information is unavailable for this city.')
+	print('Birth year data is unavailable for this city.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
