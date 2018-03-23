@@ -175,23 +175,27 @@ def user_stats(df):
     user_types = df['User Type'].value_counts()
     print('Users by Type:\n', user_types) #FIX: there is a space on the second line
     # Display counts of gender
-    gender = df['Gender'].value_counts()
-    print('Users by Gender:\n', gender) #FIX: there is a space on the second line
+    if 'Gender' in df:
+    	gender = df['Gender'].value_counts()
+    	print('Users by Gender:\n', gender) #FIX: there is a space on the second line
+    else:
+	print('Gender information is unavailable for this city.')
 
     # Display earliest, most recent, and most common year of birth
-    birth_year = df['Birth Year']
-    #Display earliest year of birth
-    earliest_year = birth_year.min()
-    print('Earliest Birth Year:', earliest_year.astype(int))
-    #Display most recent year of birth
-    recent_year = birth_year.max()
-    print('Most Recent Birth Year:', recent_year.astype(int))
-
-
-    #Display most common year of birth
-    birth_year_totals = birth_year.value_counts()
-    common_year = birth_year_totals.idxmax()
-    print('Most Common Birth Year:', common_year.astype(int))
+    if 'Birth Year' in df:
+    	birth_year = df['Birth Year']
+    	#Display earliest year of birth
+    	earliest_year = birth_year.min()
+    	print('Earliest Birth Year:', earliest_year.astype(int))
+    	#Display most recent year of birth
+    	recent_year = birth_year.max()
+    	print('Most Recent Birth Year:', recent_year.astype(int))
+    	#Display most common year of birth
+    	birth_year_totals = birth_year.value_counts()
+    	common_year = birth_year_totals.idxmax()
+    	print('Most Common Birth Year:', common_year.astype(int))
+    else:
+	print('Birth year information is unavailable for this city.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
