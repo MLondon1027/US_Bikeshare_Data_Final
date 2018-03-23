@@ -85,7 +85,7 @@ def time_stats(df):
 
 
     dfstarttime = pd.to_datetime(starttime)
-    df['month'] = df['Start Time'].dt.strftime('%B')
+    df['month'] = dfstarttime.dt.strftime('%B')
 
     popmonth = dfmonth.mode()[0]
     print('Most Popular Month:', popmonth)
