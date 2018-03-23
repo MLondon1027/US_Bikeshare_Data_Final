@@ -25,7 +25,7 @@ def get_filters():
 
     # get user input for month (all, january, february, ... , june)
     month = input('\nWhich month? January, February, March, April, May, June, or all?\n')
-    print('Okay. We will analyze data from the month of ' + month.title() + '.')
+    print('Okay. We will analyze data from ' + month.title() + '.')
     # TODO: handle raw input and complete function
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
