@@ -40,7 +40,6 @@ def get_filters():
 
     #handle valid month input
     print('Okay. We will analyze data from ' + month.title() + '.')
-    # TODO: handle raw input and complete function
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     day = input('\nWhich day of the week? Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or all?\n')
@@ -50,9 +49,9 @@ def get_filters():
 	print(day + ' is not a valid day.')
 	
     #handle valid day input
-    print('Okay. We will analyze data from ' + day.title() + '.')
-	
+    print('Okay. We will analyze data from ' + day.title() + '.')	
     print('-'*40)
+
     return city, month, day
 
 def load_data(city, month, day):
@@ -116,7 +115,6 @@ def time_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
@@ -127,8 +125,6 @@ def station_stats(df):
     start_station = df['Start Station'].mode()[0]
     print('Most Popular Start Station:', start_station)
 
-    # TODO: complete function
-
     # display most commonly used end station
     end_station = df['End Station'].mode()[0]
     print('Most Popular End Station:', end_station)
@@ -138,10 +134,8 @@ def station_stats(df):
     most_common_trip = df['combined_stations'].mode()[0]
     print('Most Frequent Combination of Start Station and End Station Trip:', most_common_trip)
 
-
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
@@ -153,13 +147,11 @@ def trip_duration_stats(df):
     total_travel_time = pd.to_timedelta(df['Trip Duration'], unit='s')
     print(total_travel_time.sum())
 
-
     # display mean travel time
     print(total_travel_time.mean())
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def user_stats(df):
     """Displays statistics on bikeshare users."""
@@ -169,24 +161,25 @@ def user_stats(df):
 
     # Display counts of user types
     user_types = df['User Type'].value_counts()
-    print('Users by Type:\n', user_types) #FIX: there is a space on the second line
+    print('Users by Type:\n', user_types)
+	
     # Display counts of gender
     if 'Gender' in df:
     	gender = df['Gender'].value_counts()
-    	print('Users by Gender:\n', gender) #FIX: there is a space on the second line
+    	print('Users by Gender:\n', gender)
     else:
 	print('Gender data is unavailable for this city.')
 
-    # Display earliest, most recent, and most common year of birth
+    # Display birth year statistics
     if 'Birth Year' in df:
     	birth_year = df['Birth Year']
-    	#Display earliest year of birth
+    #Display earliest year of birth
     	earliest_year = birth_year.min()
     	print('Earliest Birth Year:', earliest_year.astype(int))
-    	#Display most recent year of birth
+    #Display most recent year of birth
     	recent_year = birth_year.max()
     	print('Most Recent Birth Year:', recent_year.astype(int))
-    	#Display most common year of birth
+    #Display most common year of birth
     	birth_year_totals = birth_year.value_counts()
     	common_year = birth_year_totals.idxmax()
     	print('Most Common Birth Year:', common_year.astype(int))
@@ -195,7 +188,6 @@ def user_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
 
 def main():
     while True:
