@@ -32,15 +32,28 @@ def get_filters():
 
     # get user input for month (all, january, february, ... , june)
     month = input('\nWhich month? January, February, March, April, May, June, or all?\n')
+
+    #handle invalid month input
+    while month.lower() not in ('january', 'february', 'march', 'april', 'may', 'june', 'all'):
+	print(month + ' is not a valid month.')
+	month = input('\nWhich month? January, February, March, April, May, June, or all?\n')
+
+    #handle valid month input
     print('Okay. We will analyze data from ' + month.title() + '.')
     # TODO: handle raw input and complete function
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     day = input('\nWhich day of the week? Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or all?\n')
+
+    #handle invalid day input
+    while day.lower() not in ('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'all'):
+	print(day + ' is not a valid day.')
+	
+    #handle valid day input
     print('Okay. We will analyze data from ' + day.title() + '.')
+	
     print('-'*40)
     return city, month, day
-
 
 def load_data(city, month, day):
     """
