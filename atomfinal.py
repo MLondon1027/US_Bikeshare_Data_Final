@@ -17,7 +17,7 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    # get user input for city (chicago, new york city, washington).
     city = input('\nHello! Let\'s explore some US bikeshare data!\n'
                  'Would you like to see data for Chicago, New York City, or Washington?\n')
 
@@ -98,13 +98,13 @@ def time_stats(df):
     # display the most common month
     # load data file into a dataframe
     df['month'] = df['Start Time'].dt.strftime('%B')
-    popular_month = dfmonth.mode()[0]
+    popular_month = df['month'].mode()[0]
     print('Most Popular Month:', popular_month)
 
     # display the most common day of week
     # load data file into a dataframe
-    weekday_name = df['Start Time'].dt.weekday_name
-    popular_day = weekday_name.mode()[0]
+    df['day'] = df['Start Time'].dt.weekday_name
+    popular_day = df['day'].mode()[0]
     print('Most Common Day of the Week:', popular_day)
 
     # display the most common start hour
