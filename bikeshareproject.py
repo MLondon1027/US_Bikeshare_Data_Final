@@ -35,8 +35,8 @@ def get_filters():
 
     #handle invalid month input
     while month.lower() not in ('january', 'february', 'march', 'april', 'may', 'june', 'all'):
-	print(month + ' is not a valid month.')
-	month = input('\nWhich month? January, February, March, April, May, June, or all?\n')
+    	print(month + ' is not a valid month.')
+    	month = input('\nWhich month? January, February, March, April, May, June, or all?\n')
 
     #handle valid month input
     print('Okay. We will analyze data from ' + month.title() + '.')
