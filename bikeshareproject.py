@@ -169,7 +169,7 @@ def user_stats(df):
     	gender = df['Gender'].value_counts()
     	print('Users by Gender:\n', gender)
     else:
-	print('Gender data is unavailable for this city.')
+    	print('Gender data is unavailable for this city.')
 
     # Display birth year statistics
     if 'Birth Year' in df:
