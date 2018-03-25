@@ -185,7 +185,7 @@ def user_stats(df):
     	common_year = birth_year_totals.idxmax()
     	print('Most Common Birth Year:', common_year.astype(int))
     else:
-	print('Birth year data is unavailable for this city.')
+    	print('Birth year data is unavailable for this city.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
