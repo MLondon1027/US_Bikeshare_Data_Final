@@ -80,12 +80,12 @@ def load_data(city, month, day):
     # filter by month if applicable
     if month.lower() != 'all':
 	# filter by month to create the new dataframe
-	df = df[df['month'] == month.title()]
+    	df = df[df['month'] == month.title()]
 
     # filter by day of week if applicable
     if day.lower() != 'all':
         # filter by day of week to create the new dataframe
-        df = df[df['day_of_week'] == day.title()]
+    	df = df[df['day_of_week'] == day.title()]
 
     return df
 
